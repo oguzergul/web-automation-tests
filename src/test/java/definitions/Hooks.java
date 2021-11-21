@@ -14,8 +14,8 @@ public class Hooks {
         Driver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @After
-    public void teardown(){
+     @After
+     public void teardown(){
         Driver.closeDriver();
-    }
+     }
 }

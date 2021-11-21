@@ -7,11 +7,13 @@ import io.cucumber.java.en.When;
 import pages.HomePage;
 import pages.ResultPage;
 import pages.SignInPage;
+import utils.Driver;
 
 public class step_definitions {
     HomePage homePage = new HomePage();
     ResultPage resultPage = new ResultPage();
     SignInPage signInPage = new SignInPage();
+    GooglePage googlePage = new GooglePage();
 
     @Given("I open BestBuy homepage")
     public void homePageIsOpen(){
@@ -66,5 +68,46 @@ public class step_definitions {
     @When("I check if the login was successful")
     public void checkLoginIsSuccessful() {
         signInPage.checkLoginIsSuccessful();
+    }
+
+    @When("I click on Google Sign In Button")
+    public void clickOnGoogleSignInButton() {
+        signInPage.clickGoogleButton();
+    }
+
+    @And("I redirect to Google Sign In Page")
+    public void redirectToGoogleSignInPage() {
+        String parentWindow = Driver.get().getWindowHandle();
+        System.out.println("Parent Window ID is : " + parentWindow);
+
+        for(String winHandle : Driver.get().getWindowHandles()) {
+            Driver.get().switchTo().window(winHandle);
+        }
+    }
+
+    @When("I fill the email input with {string} and next")
+    public void fillEmailInput(String email) {
+        signInPage.fillGoogleEmail(email);
+    }
+
+    @When("I fill the password input with {string} and next")
+    public void fillPasswordInput(String password) {
+        signInPage.fillGooglePassword(password);
+    }
+
+
+    @When("I open Menu Dropdown")
+    public void openMenuDropdown() {
+        homePage.openMenu();
+    }
+
+    @And("I choose {string} option from list")
+    public void chooseMenuOption(String option) {
+        homePage.chooseMenuOption(option);
+    }
+
+    @And("I choose {string} category option from list")
+    public void chooseCategoryOption(String option) {
+        homePage.chooseCategoryOption(option);
     }
 }

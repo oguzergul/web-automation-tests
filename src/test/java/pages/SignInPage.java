@@ -26,7 +26,17 @@ public class SignInPage {
     @FindBy(css = "[data-track='Sign In']")
     public WebElement signInButton;
 
+    @FindBy(xpath = "//button[text()='Sign in with Google']")
+    public WebElement googleButton;
 
+    @FindBy(css = "[type='email']")
+    public WebElement googleEmail;
+
+    @FindBy(css = "[type='password']")
+    public WebElement googlePassword;
+
+    @FindBy(className = "VfPpkd-vQzf8d")
+    public WebElement nextButton;
 
     public void verifyTitle(String expected) {
       Assert.assertEquals(expected,title.getText());
@@ -42,4 +52,21 @@ public class SignInPage {
         WebElement signout = Driver.get().findElement(By.linkText("Sign Out"));
         Assert.assertTrue(signout.getText().contains("Sign Out"));
     }
+
+    public void clickGoogleButton() {
+        googleButton.click();
+    }
+
+    public void fillGoogleEmail(String email) {
+        System.out.println(Driver.get().getTitle());
+        googleEmail.sendKeys(email);
+        nextButton.click();
+    }
+
+    public void fillGooglePassword(String password) {
+        googlePassword.sendKeys(password);
+        nextButton.click();
+    }
+
+
 }

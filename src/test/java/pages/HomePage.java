@@ -26,6 +26,14 @@ public class HomePage {
     @FindBy(css = "[aria-label='submit search']")
     public WebElement searchButton;
 
+    @FindBy(css = "[aria-label='Menu']")
+    public WebElement menuButton;
+
+    @FindBy(css = "[data-t='header-navigation-button']")
+    public WebElement menuOption;
+
+
+
     public void chooseUS(){
         country.click();
     }
@@ -57,5 +65,18 @@ public class HomePage {
 
     public void openSubMenu(String name) {
         Helper.clickWithLinkText(name);
+    }
+
+    public void openMenu() {
+        menuButton.click();
+    }
+
+    public void chooseMenuOption(String option) {
+        String locator = "//button[text()='" + option + "']";
+        Driver.get().findElement(By.xpath(locator)).click();
+    }
+
+    public void chooseCategoryOption(String option) {
+        Helper.clickWithLinkText(option);
     }
 }
