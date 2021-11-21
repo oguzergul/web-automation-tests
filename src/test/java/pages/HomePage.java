@@ -1,10 +1,12 @@
 package pages;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.Driver;
+import utils.Helper;
 
 public class HomePage {
 
@@ -48,5 +50,12 @@ public class HomePage {
         searchButton.click();
     }
 
+    public void openDropdown(String name) {
+        String locator = "//span[text()='" + name + "']";
+        Driver.get().findElement(By.xpath(locator)).click();
+    }
 
+    public void openSubMenu(String name) {
+        Helper.clickWithLinkText(name);
+    }
 }
