@@ -11,7 +11,7 @@ public class Hooks {
     @Before
     public void setup(){
         Driver.get().get("https://www.bestbuy.com");
-        Driver.get().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        Driver.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @After
