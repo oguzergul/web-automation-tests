@@ -13,6 +13,6 @@ Feature: BestBuy Web Automation Tests
     When I open "Account" dropdown
     And I choose "Account" submenu
     When I check Sign In Page title is "Sign In to Best Buy"
-    When I fill Sign In form with "oguzergul98@gmail.com" and "OGuz98.5ouz"
+    When I fill Sign In form with "<Email>" and "<Password>"
     When I check if the login was successful
 
